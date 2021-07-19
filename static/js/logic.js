@@ -1,19 +1,47 @@
-// Creating our initial map object
-// We set the longitude, latitude, and the starting zoom level for sf
-// This gets inserted into the div with an id of 'map' in index.html
-var myMap = L.map("map", {
-    center: [37.7749, -122.4194],
-    zoom: 5
-});
 
-L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
+
+var grayscaleMap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
     attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
     tileSize: 512,
     maxZoom: 18,
     zoomOffset: -1,
     id: "mapbox/light-v10",
     accessToken: API_KEY
-}).addTo(myMap);
+});
+
+var satellitemap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
+    attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
+    tileSize: 512,
+    maxZoom: 18,
+    zoomOffset: -1,
+    id: "mapbox/satellite-v9",
+    accessToken: API_KEY
+});
+
+var outdoorsMap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
+    attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
+    tileSize: 512,
+    maxZoom: 18,
+    zoomOffset: -1,
+    id: "mapbox/outdoors-v11",
+    accessToken: API_KEY
+});
+
+var baseMaps = {
+    "Grayscale": grayscaleMap,
+    "Satellite": satellitemap,
+    "Outdoors": outdoorsMap
+};
+
+
+var myMap = L.map("map", {
+    center: [39.82, -98.58],
+    zoom: 5,
+    layers: [grayscaleMap]
+});
+
+L.control.layers(baseMaps, null, {collapsed: false}).addTo(myMap);
+
 
 
 
