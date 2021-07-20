@@ -14,8 +14,8 @@ The [USGS.js](./static/js/logic.js) file contains the code for the below leaflet
 * A legend.
 * Layer control that allows to to choose from one of the three map layouts below as well as toggle the earthquake and techtonic plate data on and off.
 
-![USGS Map](./Images/grayscalemap.png)
+![Grayscale Map](./Images/grayscalemap.png)
 
-![USGS Map](./Images/satellitemap.png)
+![Satellite Map](./Images/satellitemap.png)
 
-![USGS Map](./Images/grayscalemap.png.png)
+![Outdoor Map](./Images/outdoormap.png)
